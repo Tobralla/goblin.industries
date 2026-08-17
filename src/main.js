@@ -295,7 +295,6 @@ let eldoradoPromise;
 let typewriterTimer;
 
 function getRoute() {
-  if (window.__GOBLIN_FORCE_404__) return '404';
   let path = location.pathname;
   if (path.startsWith(base)) path = path.slice(base.length - 1) || '/';
   path = path.replace(/\/$/, '') || '/';
