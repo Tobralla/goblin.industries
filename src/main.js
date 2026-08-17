@@ -2,10 +2,14 @@ import './style.css';
 import viewSumHomeUrl from './assets/viewsum-home-desktop.png';
 import viewSumResultUrl from './assets/viewsum-service-result.png';
 
+const base = import.meta.env.BASE_URL;
+const route = (path) => `${base}${path}`;
+const asset = (path) => `${base}assets/${path}`;
+
 const portfolio = {
   sixfoot: {
     name: '6foot4bp',
-    logo: '/assets/6foot4bp-logo.jpg',
+    logo: asset('6foot4bp-logo.jpg'),
     site: 'https://6foot4bp.com',
     tiktok: 'https://www.tiktok.com/@6foot4bp',
     impressions: '7.68M+',
@@ -15,7 +19,7 @@ const portfolio = {
   },
   donut: {
     name: 'DonutCoinShop',
-    logo: '/assets/donutcoinshop-logo.png',
+    logo: asset('donutcoinshop-logo.png'),
     profile: 'https://www.eldorado.gg/users/DonutCoinShop',
     sales: '$920.74',
     orders: '284',
@@ -34,8 +38,8 @@ const icon = (name) => ({
 }[name] || '');
 
 const brand = `
-  <a class="brand route-link" href="/" aria-label="Goblin Industries home">
-    <img src="/assets/goblin-favicon-256.png" alt="" />
+  <a class="brand route-link" href="${route('')}" aria-label="Goblin Industries home">
+    <img src="${asset('goblin-favicon-256.png')}" alt="" />
     <span><strong>GOBLIN</strong><small>Industries</small></span>
   </a>`;
 
@@ -44,35 +48,35 @@ const header = () => `
   <header class="site-header">
     ${brand}
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a class="route-link" href="/portfolio">Portfolio</a>
-      <a class="route-link" href="/upcoming">Upcoming</a>
-      <a class="route-link nav-button" href="/contact">Contact ${icon('arrow')}</a>
+      <a class="route-link" href="${route('portfolio')}">Portfolio</a>
+      <a class="route-link" href="${route('upcoming')}">Upcoming</a>
+      <a class="route-link nav-button" href="${route('contact')}">Contact ${icon('arrow')}</a>
     </nav>
     <button class="menu-button" type="button" aria-expanded="false" aria-label="Open menu">${icon('menu')}</button>
   </header>
   <nav class="mobile-nav" aria-label="Mobile navigation">
     <div><span>MENU</span><button type="button" aria-label="Close menu">${icon('close')}</button></div>
-    <a class="route-link" href="/">Home</a>
-    <a class="route-link" href="/portfolio">Portfolio</a>
-    <a class="route-link" href="/upcoming">Upcoming</a>
-    <a class="route-link" href="/contact">Contact</a>
+    <a class="route-link" href="${route('')}">Home</a>
+    <a class="route-link" href="${route('portfolio')}">Portfolio</a>
+    <a class="route-link" href="${route('upcoming')}">Upcoming</a>
+    <a class="route-link" href="${route('contact')}">Contact</a>
   </nav>`;
 
 const footer = () => `
   <footer class="site-footer">
-    <div><a class="route-link" href="/portfolio">Portfolio</a><a class="route-link" href="/upcoming">Upcoming</a><a class="route-link" href="/contact">Contact</a></div>
+    <div><a class="route-link" href="${route('portfolio')}">Portfolio</a><a class="route-link" href="${route('upcoming')}">Upcoming</a><a class="route-link" href="${route('contact')}">Contact</a></div>
     <small>© ${new Date().getFullYear()} Goblin Industries</small>
   </footer>`;
 
 const heroBento = () => `
   <div class="hero-bento lift" aria-label="Featured ventures">
-    <a class="bento-card bento-project spotlight route-link" href="/6foot4bp">
+    <a class="bento-card bento-project spotlight route-link" href="${route('6foot4bp')}">
       <img src="${portfolio.sixfoot.logo}" alt="6foot4bp logo" />
       <div><small>SOCIAL MEDIA AFFILIATE ACCOUNT</small><strong>6foot4bp</strong></div>
       ${icon('arrow')}
     </a>
     <div class="bento-card bento-stat bento-accent spotlight"><small>12-MONTH REACH</small><strong>${portfolio.sixfoot.impressions}</strong><span>impressions</span></div>
-    <a class="bento-card bento-project spotlight route-link" href="/donutcoinshop">
+    <a class="bento-card bento-project spotlight route-link" href="${route('donutcoinshop')}">
       <img src="${portfolio.donut.logo}" alt="DonutCoinShop logo" />
       <div><small>B2B MARKETPLACE VENDOR ACCOUNT</small><strong>DonutCoinShop</strong></div>
       ${icon('arrow')}
@@ -164,34 +168,34 @@ const homePage = () => `
       <div class="hero-copy lift">
         <h1>Goblin<br /><em>Industries.</em></h1>
         <p class="hero-summary">Independent digital products under one company.</p>
-        <a class="primary-link route-link" href="/portfolio">View portfolio ${icon('arrow')}</a>
+        <a class="primary-link route-link" href="${route('portfolio')}">View portfolio ${icon('arrow')}</a>
       </div>
       ${heroBento()}
     </section>
     <section class="home-upcoming section-shell lift">
       <header class="home-upcoming-header">
         <div><span>COMING NEXT</span><h2>Upcoming projects.</h2></div>
-        <a class="route-link" href="/upcoming">View roadmap ${icon('arrow')}</a>
+        <a class="route-link" href="${route('upcoming')}">View roadmap ${icon('arrow')}</a>
       </header>
       <div class="home-upcoming-grid">
-        <a class="home-upcoming-card home-upcoming-card--economi route-link spotlight" href="/upcoming">
-          <img src="/assets/economi-logo.svg" alt="Economi logo" />
+        <a class="home-upcoming-card home-upcoming-card--economi route-link spotlight" href="${route('upcoming')}">
+          <img src="${asset('economi-logo.svg')}" alt="Economi logo" />
           <div><small>SHARED-WORLD ECONOMY GAME</small><strong>economi<span>.</span></strong></div>
           ${icon('arrow')}
         </a>
-        <a class="home-upcoming-card home-upcoming-card--viewsum route-link spotlight" href="/upcoming">
-          <img src="/assets/viewsum-logo.svg" alt="ViewSum logo" />
+        <a class="home-upcoming-card home-upcoming-card--viewsum route-link spotlight" href="${route('upcoming')}">
+          <img src="${asset('viewsum-logo.svg')}" alt="ViewSum logo" />
           <div><small>TIKTOK ANALYTICS TOOL</small><strong>ViewSum</strong></div>
           ${icon('arrow')}
         </a>
-        <a class="home-upcoming-card home-upcoming-card--genfarmers route-link spotlight" href="/upcoming">
-          <span class="genfarmers-logo-frame"><img src="/assets/genfarmers-logo.png" alt="GenFarmers logo" /></span>
+        <a class="home-upcoming-card home-upcoming-card--genfarmers route-link spotlight" href="${route('upcoming')}">
+          <span class="genfarmers-logo-frame"><img src="${asset('genfarmers-logo.png')}" alt="GenFarmers logo" /></span>
           <div><small>MINECRAFT SERVER</small><strong>GenFarmers</strong></div>
           ${icon('arrow')}
         </a>
       </div>
     </section>
-    <section class="contact-strip section-shell lift"><div><span>CONTACT</span><h2 aria-label="Have a serious idea? Want to sell your Product? Building something worth growing? Ready to work together?"><span class="typewriter-text" data-typewriter aria-hidden="true">Have a serious idea?</span></h2></div><a class="primary-link route-link" href="/contact">Get in touch ${icon('arrow')}</a></section>
+    <section class="contact-strip section-shell lift"><div><span>CONTACT</span><h2 aria-label="Have a serious idea? Want to sell your Product? Building something worth growing? Ready to work together?"><span class="typewriter-text" data-typewriter aria-hidden="true">Have a serious idea?</span></h2></div><a class="primary-link route-link" href="${route('contact')}">Get in touch ${icon('arrow')}</a></section>
   </main>
   ${footer()}`;
 
@@ -227,13 +231,13 @@ const upcomingPage = () => `
     <section class="upcoming-section section-shell lift" aria-label="Upcoming Goblin Industries projects">
       <div class="upcoming-grid">
         <article class="upcoming-card upcoming-card--economi spotlight">
-          <header class="upcoming-card-head"><img src="/assets/economi-logo.svg" alt="Economi logo" /></header>
+          <header class="upcoming-card-head"><img src="${asset('economi-logo.svg')}" alt="Economi logo" /></header>
           <div class="upcoming-card-body"><small>SHARED-WORLD ECONOMY GAME</small><h2>economi<span>.</span></h2><p>A social economy game built around companies, cities, progression, and a shared interactive world.</p></div>
           <div class="upcoming-card-visual project-mark-stage"><span>Images coming soon...</span></div>
           <footer><span>IN DEVELOPMENT</span></footer>
         </article>
         <article class="upcoming-card upcoming-card--viewsum spotlight">
-          <header class="upcoming-card-head"><img src="/assets/viewsum-logo.svg" alt="ViewSum logo" /></header>
+          <header class="upcoming-card-head"><img src="${asset('viewsum-logo.svg')}" alt="ViewSum logo" /></header>
           <div class="upcoming-card-body"><small>TIKTOK ANALYTICS TOOL</small><h2>ViewSum</h2><p>A focused analytics product for calculating the total lifetime views of any public TikTok account.</p></div>
           <div class="upcoming-card-visual viewsum-gallery" aria-label="ViewSum website previews">
             <div class="viewsum-gallery-stage">
@@ -254,7 +258,7 @@ const upcomingPage = () => `
           <footer><span>IN DEVELOPMENT</span></footer>
         </article>
         <article class="upcoming-card upcoming-card--genfarmers spotlight">
-          <header class="upcoming-card-head"><span class="genfarmers-logo-frame"><img src="/assets/genfarmers-logo.png" alt="GenFarmers logo" /></span></header>
+          <header class="upcoming-card-head"><span class="genfarmers-logo-frame"><img src="${asset('genfarmers-logo.png')}" alt="GenFarmers logo" /></span></header>
           <div class="upcoming-card-body"><small>MINECRAFT SERVER</small><h2>GenFarmers</h2><p>A Skyblock generator and farming progression experience built for a persistent multiplayer community.</p></div>
           <div class="upcoming-card-visual project-mark-stage"><span>Images coming soon...</span></div>
           <footer><span>IN DEVELOPMENT</span></footer>
@@ -281,7 +285,7 @@ const contactPage = () => `
 
 const notFoundPage = () => `
   ${header()}
-  <main class="not-found section-shell"><div class="error-mark"><span>4</span><img src="/assets/goblin-favicon-transparent.png" alt="" /><span>4</span></div><h1>Wrong tunnel.</h1><a class="primary-link route-link" href="/">Return home ${icon('arrow')}</a></main>
+  <main class="not-found section-shell"><div class="error-mark"><span>4</span><img src="${asset('goblin-favicon-transparent.png')}" alt="" /><span>4</span></div><h1>Wrong tunnel.</h1><a class="primary-link route-link" href="${route('')}">Return home ${icon('arrow')}</a></main>
   ${footer()}`;
 
 const app = document.querySelector('#app');
@@ -292,14 +296,16 @@ let typewriterTimer;
 
 function getRoute() {
   if (window.__GOBLIN_FORCE_404__) return '404';
-  const path = location.pathname.replace(/\/$/, '') || '/';
+  let path = location.pathname;
+  if (path.startsWith(base)) path = path.slice(base.length - 1) || '/';
+  path = path.replace(/\/$/, '') || '/';
   if (path === '/' || path === '/index.html') return 'home';
   if (path === '/projects' || path === '/owned-products') {
-    history.replaceState({}, '', '/portfolio');
+    history.replaceState({}, '', route('portfolio'));
     return 'portfolio';
   }
   if (path === '/portfolio') return 'portfolio';
-  if (path === '/upcoming-projects') { history.replaceState({}, '', '/upcoming'); return 'upcoming'; }
+  if (path === '/upcoming-projects') { history.replaceState({}, '', route('upcoming')); return 'upcoming'; }
   if (path === '/upcoming') return 'upcoming';
   if (path === '/6foot4bp') return 'sixfoot';
   if (path === '/donutcoinshop') return 'donut';
@@ -488,7 +494,7 @@ function parseAnalytics(csv) {
 }
 
 function loadAnalytics() {
-  analyticsPromise ||= fetch('/data/6foot4bp-overview.csv').then((response) => {
+  analyticsPromise ||= fetch(`${base}data/6foot4bp-overview.csv`).then((response) => {
     if (!response.ok) throw new Error('Analytics unavailable');
     return response.text();
   }).then(parseAnalytics);
@@ -507,7 +513,7 @@ function parseEldoradoDaily(csv) {
 }
 
 function loadEldoradoAnalytics() {
-  eldoradoPromise ||= fetch('/data/donutcoinshop-daily.csv').then((response) => {
+  eldoradoPromise ||= fetch(`${base}data/donutcoinshop-daily.csv`).then((response) => {
     if (!response.ok) throw new Error('Eldorado analytics unavailable');
     return response.text();
   }).then(parseEldoradoDaily);
