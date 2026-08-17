@@ -28,7 +28,7 @@ jobs:
         id: pages
         with:
           enablement: true
-      - run: npm run build -- --base "${{ steps.pages.outputs.base_path }}"
+      - run: npm run build -- --base "${{ steps.pages.outputs.base_path }}/"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
